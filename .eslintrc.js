@@ -44,11 +44,11 @@ module.exports = {
         "react-native/no-inline-styles": [
             "error"
         ],
-        "react-native/no-color-literals": [
-            "error"
-        ],
         "react-native/no-raw-text": [
             "error"
         ],
+        "react/jsx-uses-vars": [
+            "error"
+        ]
     }
 };
