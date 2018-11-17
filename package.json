@@ -4,14 +4,26 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "test": "jest"
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.4"
+    "react-native": "0.57.4",
+    "react-native-elements": "^0.19.1",
+    "react-native-platform-touchable": "^1.1.1",
+    "react-native-vector-icons": "^6.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
+    "eslint": "5.8.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-react-native": "3.5.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.48.2",
     "react-test-renderer": "16.6.0-alpha.8af6728"
