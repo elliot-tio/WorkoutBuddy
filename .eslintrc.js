@@ -5,7 +5,10 @@ module.exports = {
         "node": true,
         "react-native/react-native": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "airbnb",
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -19,10 +22,6 @@ module.exports = {
         "react-native"
     ],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
         "linebreak-style": [
             "error",
             "unix"
@@ -49,6 +48,18 @@ module.exports = {
         ],
         "react/jsx-uses-vars": [
             "error"
+        ],
+        "no-tabs": [
+            "off"
+        ],
+        "no-use-before-define": [
+            "off"
+        ],
+        "react/prefer-stateless-function": [
+            "off"
+        ],
+        "react/jsx-filename-extension": [
+            "off"
         ]
     }
-};
+}
