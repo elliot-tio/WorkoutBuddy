@@ -1,5 +1,7 @@
 // Constants shared between multiple components
 
+export const APP_NAME = 'Workout Buddy'
+
 export const logoScreenTimer = 2000
 export const DARK_PRIMARY_COLOR = '#303F9F'
 export const PRIMARY_COLOR = '#3F51B5'
