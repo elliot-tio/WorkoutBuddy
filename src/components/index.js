@@ -9,10 +9,10 @@
 import React, { Component } from 'react'
 import { StyleSheet, StatusBar, View, Text } from 'react-native'
 
-import Chart from './chart/chart'
+import List from './list/list'
 import TileButton from './button/button'
 
-import { DARK_PRIMARY_COLOR, ACCENT_COLOR } from './constants'
+import { ACCENT_COLOR } from './constants'
 
 type Props = {}
 export default class WorkoutBuddy extends Component<Props> {
@@ -23,7 +23,7 @@ export default class WorkoutBuddy extends Component<Props> {
         <StatusBar
           barStyle="light-content"
         />
-        <Chart />
+        <List />
         <View style={styles.buttons}>
           <TileButton text='Details' />
           <TileButton text='Settings' />
@@ -36,7 +36,7 @@ export default class WorkoutBuddy extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: DARK_PRIMARY_COLOR,
+    backgroundColor: ACCENT_COLOR,
     flex: 1,
   },
   buttons: {

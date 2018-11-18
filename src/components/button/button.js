@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text } from 'react-native'
 
 import Touchable from 'react-native-platform-touchable'
-import { ACCENT_COLOR } from './../constants'
+import { TEXT_COLOR } from './../constants'
 
 export default class TileButton extends Component {
   constructor(props) {
@@ -13,7 +13,8 @@ export default class TileButton extends Component {
   }
 
   _onPress () {
-      console.log('button pressed')
+      let buttonText = this.state.text
+      console.log(buttonText + ' button pressed')
   }
 
   render() {
@@ -37,5 +38,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     textAlignVertical: 'center',
+    color: TEXT_COLOR
   }
 })
