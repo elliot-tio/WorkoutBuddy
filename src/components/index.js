@@ -6,41 +6,43 @@
  * @flow
  */
 
-import React, { Component } from 'react'
-import { StyleSheet, StatusBar, View, Text } from 'react-native'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
+import { StyleSheet } from 'react-native'
+import React from 'react'
 
-import List from './list/list'
-import TileButton from './button/button'
-
-import { ACCENT_COLOR } from './constants'
-
-type Props = {}
-export default class WorkoutBuddy extends Component<Props> {
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar
-          barStyle="light-content"
-        />
-        <List />
-        <View style={styles.buttons}>
-          <TileButton text='Details' />
-          <TileButton text='Settings' />
-        </View>
-        <TileButton text='Add Workout' />
-      </View>
-    )
-  }
-}
+import { APP_NAME, DARK_PRIMARY_COLOR } from './constants'
+import MainScreen from './main_screen'
+import DetailsScreen from './details_screen'
+import SettingsScreen from './settings_screen'
+import AddWorkoutsScreen from './add_workouts_screen'
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: ACCENT_COLOR,
-    flex: 1,
+  appHeader: {
+    backgroundColor: DARK_PRIMARY_COLOR
   },
-  buttons: {
-    flexDirection: 'row',
-    flex: 0.5,
-  },
+  appHeaderTitle: {
+    color: 'black',
+    alignSelf: 'center'
+  }
 })
+
+class HomeScreen extends React.Component {
+  render() {
+    return (<MainScreen />)
+  }
+}
+const WB = createStackNavigator({
+  MainScreen: { screen: MainScreen },
+  Details: { screen: DetailsScreen },
+  Settings: { screen: SettingsScreen },
+  AddWorkouts: { screen: AddWorkoutsScreen }
+}, {
+  navigationOptions: {
+    headerStyle: styles.appHeader,
+    headerTitleStyle: styles.appHeaderTitle,
+    title: APP_NAME,
+    headerTintColor: 'black'
+  }
+})
+
+export default createAppContainer(WB)
