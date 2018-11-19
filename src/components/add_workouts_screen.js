@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-import { PRIMARY_TEXT } from './constants'
+import { PRIMARY_TEXT, PRIMARY_COLOR } from './constants'
 
 export default class AddWorkout extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: PRIMARY_COLOR
+    },
+    headerTitleStyle: {
+      color: 'black',
+      alignSelf: 'center'
+    },
+    title: 'Add Workout',
+    headerTintColor: 'black',
+  }
+
   constructor(props) {
       super(props)
       this.state = {

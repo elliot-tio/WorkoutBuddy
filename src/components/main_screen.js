@@ -4,9 +4,21 @@ import { StyleSheet, StatusBar, View, Text } from 'react-native'
 import List from './list'
 import Touchable from 'react-native-platform-touchable'
 
-import { ACCENT_COLOR, APP_NAME, TEXT_COLOR } from './constants'
+import { PRIMARY_COLOR, APP_NAME, TEXT_COLOR, DARK_PRIMARY_COLOR } from './constants'
 
 export default class MainScreen extends Component<Props> {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: PRIMARY_COLOR
+    },
+    headerTitleStyle: {
+      color: 'black',
+      alignSelf: 'center'
+    },
+    title: APP_NAME,
+    headerTintColor: 'black',
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -41,7 +53,7 @@ export default class MainScreen extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: ACCENT_COLOR,
+    backgroundColor: DARK_PRIMARY_COLOR,
     flex: 1,
   },
   buttons: {
@@ -57,5 +69,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     color: TEXT_COLOR
-  }
+  },
 })
