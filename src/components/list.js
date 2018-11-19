@@ -1,12 +1,69 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { PRIMARY_TEXT } from './constants';
+import { StyleSheet, FlatList, View } from 'react-native'
+import { List, ListItem } from 'react-native-elements'
+import { PRIMARY_TEXT, LIGHT_PRIMARY_COLOR } from './constants';
 
-export default class List extends Component {
+export default class WorkoutList extends Component {
+  constructor() {
+    super();
+    const list = [
+      {
+        name: 'Example 1',
+        subtitle: 'Example 1'
+      },
+      {
+        name: 'Example 2',
+        subtitle: 'Example 2'
+      },
+      {
+        name: 'Example 3',
+        subtitle: 'Example 3'
+      },
+      {
+        name: 'Example 4',
+        subtitle: 'Example 4'
+      },
+      {
+        name: 'Example 1',
+        subtitle: 'Example 1'
+      },
+      {
+        name: 'Example 1',
+        subtitle: 'Example 1'
+      },
+      {
+        name: 'Example 1',
+        subtitle: 'Example 1'
+      },
+      {
+        name: 'Example 1',
+        subtitle: 'Example 1'
+      },
+    ]
+    this.state = {
+      list: list
+    }
+  }
+
+  renderRow ({ item }) {
+    return (
+      <ListItem
+        title={item.name}
+        subtitle={item.subtitle}
+      />
+    )
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>This is list 1</Text>
+        <List containerStyle={{marginBottom: 20}}>
+          <FlatList
+            data={this.state.list}
+            renderItem={this.renderRow}
+            keyExtractor={item => item.name}
+          />
+        </List>
       </View>
     )
   }
@@ -15,9 +72,7 @@ export default class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: LIGHT_PRIMARY_COLOR,
   },
   text: {
     fontSize: 20,

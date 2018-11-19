@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet, StatusBar, View, Text } from 'react-native'
 
-import List from './list'
+import WorkoutList from './list'
 import Touchable from 'react-native-platform-touchable'
 
-import { PRIMARY_COLOR, APP_NAME, TEXT_COLOR, DARK_PRIMARY_COLOR } from './constants'
+import { PRIMARY_COLOR, APP_NAME, TEXT_COLOR, DARK_PRIMARY_COLOR, LIGHT_PRIMARY_COLOR } from './constants'
 
 export default class MainScreen extends Component<Props> {
   static navigationOptions = {
@@ -25,17 +25,19 @@ export default class MainScreen extends Component<Props> {
         <StatusBar
           barStyle="light-content"
         />
-        <List />
+        <WorkoutList />
         <View style={styles.buttons}>
           <Touchable
             onPress={() => this.props.navigation.navigate('Details')}
             style={styles.button}
+            background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
           >
             <Text style={styles.text}>Details</Text>
           </Touchable>
           <Touchable
             onPress={() => this.props.navigation.navigate('Settings')}
             style={styles.button}
+            background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
           >
             <Text style={styles.text}>Settings</Text>
           </Touchable>
@@ -43,7 +45,8 @@ export default class MainScreen extends Component<Props> {
         <Touchable
           onPress={() => this.props.navigation.navigate('AddWorkouts')}
           style={styles.button}
-        >
+          background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
+          >
           <Text style={styles.text}>Add Workout</Text>
         </Touchable>
       </View>
