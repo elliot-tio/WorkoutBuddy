@@ -41,6 +41,10 @@ export const BODY_AREAS = [
         label: 'Shoulders',
         value: 'shoulders',
     },
+    {
+        label: 'Other',
+        value: 'other',
+    },
 ]
 
 export const WORKOUTS = [

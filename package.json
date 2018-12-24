@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "build": "node node_modules/react-native/local-cli/cli.js run-android",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "test": "jest",
-    "logger": "node node_modules/react-native/local-cli/cli.js log-android"
+    "log": "node node_modules/react-native/local-cli/cli.js log-android"
   },
   "dependencies": {
     "babel-core": "^6.26.3",

@@ -37,6 +37,7 @@ export default class AddWorkout extends Component {
       isDateTimePickerVisible: false,
       date: new Date().toDateString(),
       selectedArea: '',
+      otherArea: '',
       selectedWorkout: '',
       otherWorkout: '',
       sets: 0,
@@ -47,6 +48,7 @@ export default class AddWorkout extends Component {
       workouts: WORKOUTS,
       range: SETS_RANGE,
       isWorkoutManual: false,
+      isAreaManual: false,
     }
   }
 
@@ -58,6 +60,20 @@ export default class AddWorkout extends Component {
     console.log('A date has been picked:', date)
     this.setState({ date: date.toDateString() })
     this._hideDateTimePicker()
+  }
+
+  _showAreaInput = () => this.setState({ isAreaManual: true })
+
+  _hideAreaInput = () => this.setState({ isAreaManual: false })
+
+  _handleAreaPicker = (area) => {
+    this.setState({ selectedArea: area })
+    if (area === 'other') {
+      this._showAreaInput()
+    } else {
+      this.setState({ otherArea: '' })
+      this._hideAreaInput()
+    }
   }
 
   _showWorkoutInput = () => this.setState({ isWorkoutManual: true })
@@ -106,10 +122,19 @@ export default class AddWorkout extends Component {
           <Text style={styles.textSmall}>Muscle Group:</Text>
           <RNPicker
             value={this.state.selectedArea}
-            onValueChange={area => {
-              this.setState({ selectedArea: area })}
-            }
+            onValueChange={this._handleAreaPicker}
             items={this.state.bodyAreas}/>
+          { this.state.isAreaManual &&
+            <TextField
+              label=''
+              placeholder='Enter an area...'
+              style={{ marginLeft: 7 }}
+              tintColor={PRIMARY_COLOR}
+              activeLineWidth={1}
+              linewidth={1}
+              onChangeText={(text) => this.setState({ otherArea: text})}
+            />
+          }
         </View>
 
         <View style={{ flexDirection: 'column' }}>
@@ -122,7 +147,7 @@ export default class AddWorkout extends Component {
             <TextField
               label=''
               placeholder='Enter a workout...'
-              linewidth={0.4}
+              style={{ marginLeft: 7 }}
               tintColor={PRIMARY_COLOR}
               activeLineWidth={1}
               linewidth={1}

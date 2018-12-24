@@ -53,15 +53,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttons: {
-    backgroundColor: LIGHT_PRIMARY_COLOR,
+    backgroundColor: PRIMARY_COLOR,
     flex: 1,
   },
   button: {
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: DARK_PRIMARY_COLOR,
     flex: 0.5,
-    marginBottom: 20,
-    marginLeft: 10,
-    marginRight: 10,
+    margin: 10,
     borderRadius: 10
   },
   buttonStart: {
