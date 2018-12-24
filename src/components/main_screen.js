@@ -4,7 +4,7 @@ import { StyleSheet, StatusBar, View, Text } from 'react-native'
 import WorkoutList from './list'
 import Touchable from 'react-native-platform-touchable'
 
-import { PRIMARY_COLOR, APP_NAME, TEXT_COLOR, DARK_PRIMARY_COLOR, LIGHT_PRIMARY_COLOR } from './constants'
+import { ACCENT_COLOR, PRIMARY_COLOR, APP_NAME, TEXT_COLOR, DARK_PRIMARY_COLOR, LIGHT_PRIMARY_COLOR } from './constants'
 
 export default class MainScreen extends Component<Props> {
   static navigationOptions = {
@@ -28,27 +28,20 @@ export default class MainScreen extends Component<Props> {
         <WorkoutList />
         <View style={styles.buttons}>
           <Touchable
-            onPress={() => this.props.navigation.navigate('Details')}
-            style={styles.button}
-            background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
-          >
-            <Text style={styles.text}>Details</Text>
-          </Touchable>
-          <Touchable
             onPress={() => this.props.navigation.navigate('Settings')}
             style={styles.button}
             background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
           >
             <Text style={styles.text}>Settings</Text>
           </Touchable>
+          <Touchable
+            onPress={() => this.props.navigation.navigate('AddWorkouts')}
+            style={styles.buttonStart}
+            background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
+            >
+            <Text style={styles.text}>Start Workout</Text>
+          </Touchable>
         </View>
-        <Touchable
-          onPress={() => this.props.navigation.navigate('AddWorkouts')}
-          style={styles.button}
-          background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
-          >
-          <Text style={styles.text}>Add Workout</Text>
-        </Touchable>
       </View>
     )
   }
@@ -60,11 +53,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttons: {
-    flexDirection: 'row',
-    flex: 0.5,
+    backgroundColor: LIGHT_PRIMARY_COLOR,
+    flex: 1,
   },
   button: {
+    backgroundColor: PRIMARY_COLOR,
     flex: 0.5,
+    marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 10
+  },
+  buttonStart: {
+    backgroundColor: ACCENT_COLOR,
+    flex: 0.5,
+    marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 10
   },
   text: {
     flex: 1,

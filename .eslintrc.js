@@ -46,6 +46,9 @@ module.exports = {
         "react-native/no-raw-text": [
             "error"
         ],
+        "react-native/no-unused-vars": [
+            "error"
+        ],
         "react/jsx-uses-vars": [
             "error"
         ],

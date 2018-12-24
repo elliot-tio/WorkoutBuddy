@@ -11,7 +11,6 @@ import { StyleSheet } from 'react-native'
 import React from 'react'
 
 import MainScreen from './main_screen'
-import DetailsScreen from './details_screen'
 import SettingsScreen from './settings_screen'
 import AddWorkoutsScreen from './add_workouts_screen'
 
@@ -21,8 +20,7 @@ class HomeScreen extends React.Component {
   }
 }
 const WB = createStackNavigator({
-  MainScreen: { screen: MainScreen },
-  Details: { screen: DetailsScreen },
+  Home: { screen: MainScreen },
   Settings: { screen: SettingsScreen },
   AddWorkouts: { screen: AddWorkoutsScreen }
 })

@@ -24,20 +24,20 @@ export default class WorkoutList extends Component {
         subtitle: 'Example 4'
       },
       {
-        name: 'Example 1',
-        subtitle: 'Example 1'
+        name: 'Example 5',
+        subtitle: 'Example 5'
       },
       {
-        name: 'Example 1',
-        subtitle: 'Example 1'
+        name: 'Example 6',
+        subtitle: 'Example 6'
       },
       {
-        name: 'Example 1',
-        subtitle: 'Example 1'
+        name: 'Example 7',
+        subtitle: 'Example 7'
       },
       {
-        name: 'Example 1',
-        subtitle: 'Example 1'
+        name: 'Example 8',
+        subtitle: 'Example 8'
       },
     ]
     this.state = {
