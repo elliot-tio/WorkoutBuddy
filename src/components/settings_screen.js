@@ -4,20 +4,13 @@ import { StyleSheet, View, Text } from 'react-native'
 import { PRIMARY_TEXT, PRIMARY_COLOR } from './constants'
 
 export default class Settings extends Component {
-  constructor(props) {
-      super(props)
-      this.state = {
-          text: this.props.text
-      }
-  }
-
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: PRIMARY_COLOR
+      backgroundColor: PRIMARY_COLOR,
     },
     headerTitleStyle: {
       color: 'black',
-      alignSelf: 'center'
+      alignSelf: 'center',
     },
     title: 'Settings',
     headerTintColor: 'black',
@@ -44,6 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     textAlignVertical: 'center',
-    color: PRIMARY_TEXT
-  }
+    color: PRIMARY_TEXT,
+  },
 })

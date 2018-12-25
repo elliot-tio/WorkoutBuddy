@@ -1,61 +1,66 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Slider } from 'react-native'
+import {
+  StyleSheet, View, Text,
+} from 'react-native'
+import { Overlay } from 'react-native-elements'
 
 import Touchable from 'react-native-platform-touchable'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import RNPicker from 'react-native-picker-select'
 import { TextField } from 'react-native-material-textfield'
 
-import { 
+import {
   PRIMARY_TEXT,
   PRIMARY_COLOR,
   ACCENT_COLOR,
   LIGHT_PRIMARY_COLOR,
-  DARK_PRIMARY_COLOR,
   BODY_AREAS,
   WORKOUTS,
-  SETS_RANGE,
-  TEXT_COLOR
+  TEXT_COLOR,
+  SUBMIT_BORDER_RADIUS,
+  ADD_BORDER_RADIUS,
+  BORDER_RADIUS,
 } from './constants'
 
 export default class AddWorkout extends Component {
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: PRIMARY_COLOR
+      backgroundColor: PRIMARY_COLOR,
     },
     headerTitleStyle: {
       color: 'black',
-      alignSelf: 'center'
+      alignSelf: 'center',
     },
     title: 'Add Workout',
     headerTintColor: 'black',
   }
+
   constructor(props) {
     super(props)
 
     this.state = {
       isDateTimePickerVisible: false,
+      isOverlayVisible: false,
       date: new Date().toDateString(),
       selectedArea: '',
       otherArea: '',
       selectedWorkout: '',
       otherWorkout: '',
-      sets: 0,
       reps: 0,
       weight: 0,
       units: ['lbs', 'kg'],
       bodyAreas: BODY_AREAS,
       workouts: WORKOUTS,
-      range: SETS_RANGE,
       isWorkoutManual: false,
       isAreaManual: false,
+      sets: [],
     }
   }
 
   _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true })
- 
+
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false })
- 
+
   _handleDatePicked = (date) => {
     console.log('A date has been picked:', date)
     this.setState({ date: date.toDateString() })
@@ -90,14 +95,32 @@ export default class AddWorkout extends Component {
     }
   }
 
+  _addSet = () => {
+    this.setState({ isOverlayVisible: true })
+    console.log('Adding set...')
+  }
+
   onSubmit = () => {
+    const { selectedArea, selectedWorkout, otherWorkout } = this.state
     console.log('Submitted!')
-    console.log('Selected Area:', this.state.selectedArea)
-    console.log('Selected Workout:', this.state.selectedWorkout)
-    console.log('Other Workout:', this.state.otherWorkout)
+    console.log('Selected Area:', selectedArea)
+    console.log('Selected Workout:', selectedWorkout)
+    console.log('Other Workout:', otherWorkout)
   }
 
   render() {
+    const {
+      date,
+      isDateTimePickerVisible,
+      selectedArea,
+      bodyAreas,
+      selectedWorkout,
+      workouts,
+      isWorkoutManual,
+      isAreaManual,
+      isOverlayVisible,
+    } = this.state
+
     return (
       <View style={styles.container}>
         <View style={{ flexDirection: 'column' }}>
@@ -107,66 +130,83 @@ export default class AddWorkout extends Component {
             onPress={this._showDateTimePicker}
             style={styles.button}
           >
-            <Text style={styles.buttonText}>{this.state.date}</Text>
+            <Text style={styles.buttonText}>{date}</Text>
           </Touchable>
         </View>
 
         <DateTimePicker
-          isVisible={this.state.isDateTimePickerVisible}
+          isVisible={isDateTimePickerVisible}
           onConfirm={this._handleDatePicked}
           onCancel={this._hideDateTimePicker}
-          maximumDate={new Date}
+          maximumDate={new Date()}
         />
 
         <View style={{ flexDirection: 'column' }}>
           <Text style={styles.textSmall}>Muscle Group:</Text>
           <RNPicker
-            value={this.state.selectedArea}
+            value={selectedArea}
             onValueChange={this._handleAreaPicker}
-            items={this.state.bodyAreas}/>
-          { this.state.isAreaManual &&
+            items={bodyAreas}
+          />
+          { isAreaManual
+            && (
             <TextField
-              label=''
-              placeholder='Enter an area...'
+              label=""
+              placeholder="Enter an area..."
               style={{ marginLeft: 7 }}
               tintColor={PRIMARY_COLOR}
               activeLineWidth={1}
               linewidth={1}
-              onChangeText={(text) => this.setState({ otherArea: text})}
+              onChangeText={text => this.setState({ otherArea: text })}
             />
+            )
           }
         </View>
 
         <View style={{ flexDirection: 'column' }}>
           <Text style={styles.textSmall}>Workout:</Text>
           <RNPicker
-            value={this.state.selectedWorkout}
+            value={selectedWorkout}
             onValueChange={this._handleWorkoutPicker}
-            items={this.state.workouts}/>
-          { this.state.isWorkoutManual &&
+            items={workouts}
+          />
+          { isWorkoutManual
+            && (
             <TextField
-              label=''
-              placeholder='Enter a workout...'
+              label=""
+              placeholder="Enter a workout..."
               style={{ marginLeft: 7 }}
               tintColor={PRIMARY_COLOR}
               activeLineWidth={1}
               linewidth={1}
-              onChangeText={(text) => this.setState({ otherWorkout: text})}
+              onChangeText={text => this.setState({ otherWorkout: text })}
             />
+            )
           }
         </View>
 
-        <View style={{ flexDirection: 'column' }}>
+        <View style={{ flexDirection: 'row', flex: 0.2 }}>
           <Text style={styles.textSmall}>Sets:</Text>
+          <Touchable
+            onPress={this._addSet}
+            style={styles.buttonAdd}
+            background={Touchable.Ripple(LIGHT_PRIMARY_COLOR, true)}
+          >
+            <Text style={styles.textSubmit}>+</Text>
+          </Touchable>
         </View>
 
-        <View style={{ flexDirection: 'column' }}>
-          <Text style={styles.textSmall}>Reps:</Text>
-        </View>
+        <Overlay
+          isVisible={isOverlayVisible}
+          onBackdropPress={() => this.setState({ isOverlayVisible: false })}
+        >
+          <Text>Hello</Text>
+        </Overlay>
 
         <Touchable
-            onPress={this.onSubmit}
-            style={styles.buttonSubmit}
+          onPress={this.onSubmit}
+          background={Touchable.Ripple(LIGHT_PRIMARY_COLOR, true)}
+          style={styles.buttonSubmit}
         >
           <Text style={styles.textSubmit}>Add Workout</Text>
         </Touchable>
@@ -182,7 +222,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor: LIGHT_PRIMARY_COLOR,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
   },
   textSmall: {
     color: PRIMARY_TEXT,
@@ -190,10 +230,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttonText: {
-    color: TEXT_COLOR
-  },
-  picker: {
-    padding: 10
+    color: TEXT_COLOR,
   },
   button: {
     height: 'auto',
@@ -201,7 +238,16 @@ const styles = StyleSheet.create({
     backgroundColor: PRIMARY_COLOR,
     padding: 10,
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: BORDER_RADIUS,
+  },
+  buttonAdd: {
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: PRIMARY_COLOR,
+    borderRadius: ADD_BORDER_RADIUS,
+    marginLeft: 'auto',
   },
   buttonSubmit: {
     height: 'auto',
@@ -209,11 +255,11 @@ const styles = StyleSheet.create({
     backgroundColor: ACCENT_COLOR,
     padding: 10,
     alignItems: 'center',
-    borderRadius: 50,
+    borderRadius: SUBMIT_BORDER_RADIUS,
   },
   textSubmit: {
     fontSize: 20,
     padding: 10,
-    color: TEXT_COLOR
+    color: TEXT_COLOR,
   },
 })

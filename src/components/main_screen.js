@@ -1,25 +1,36 @@
 import React, { Component } from 'react'
-import { StyleSheet, StatusBar, View, Text } from 'react-native'
+import {
+  StyleSheet, StatusBar, View, Text,
+} from 'react-native'
 
-import WorkoutList from './list'
 import Touchable from 'react-native-platform-touchable'
+import WorkoutList from './list'
 
-import { ACCENT_COLOR, PRIMARY_COLOR, APP_NAME, TEXT_COLOR, DARK_PRIMARY_COLOR, LIGHT_PRIMARY_COLOR } from './constants'
+import {
+  ACCENT_COLOR,
+  PRIMARY_COLOR,
+  APP_NAME,
+  TEXT_COLOR,
+  DARK_PRIMARY_COLOR,
+  LIGHT_PRIMARY_COLOR,
+  BORDER_RADIUS,
+} from './constants'
 
-export default class MainScreen extends Component<Props> {
+export default class MainScreen extends Component<void> {
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: PRIMARY_COLOR
+      backgroundColor: PRIMARY_COLOR,
     },
     headerTitleStyle: {
       color: 'black',
-      alignSelf: 'center'
+      alignSelf: 'center',
     },
     title: APP_NAME,
     headerTintColor: 'black',
   }
 
   render() {
+    const { navigation } = this.props
     return (
       <View style={styles.container}>
         <StatusBar
@@ -28,17 +39,17 @@ export default class MainScreen extends Component<Props> {
         <WorkoutList />
         <View style={styles.buttons}>
           <Touchable
-            onPress={() => this.props.navigation.navigate('Settings')}
+            onPress={() => navigation.navigate('Settings')}
             style={styles.button}
             background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
           >
             <Text style={styles.text}>Settings</Text>
           </Touchable>
           <Touchable
-            onPress={() => this.props.navigation.navigate('AddWorkouts')}
+            onPress={() => navigation.navigate('AddWorkouts')}
             style={styles.buttonStart}
             background={Touchable.Ripple(LIGHT_PRIMARY_COLOR)}
-            >
+          >
             <Text style={styles.text}>Start Workout</Text>
           </Touchable>
         </View>
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: DARK_PRIMARY_COLOR,
     flex: 0.5,
     margin: 10,
-    borderRadius: 10
+    borderRadius: BORDER_RADIUS,
   },
   buttonStart: {
     backgroundColor: ACCENT_COLOR,
@@ -68,13 +79,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginLeft: 10,
     marginRight: 10,
-    borderRadius: 10
+    borderRadius: BORDER_RADIUS,
   },
   text: {
     flex: 1,
     fontSize: 20,
     textAlign: 'center',
     textAlignVertical: 'center',
-    color: TEXT_COLOR
+    color: TEXT_COLOR,
   },
 })

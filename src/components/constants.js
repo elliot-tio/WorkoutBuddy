@@ -11,63 +11,64 @@ export const ACCENT_COLOR = '#4CAF50'
 export const PRIMARY_TEXT = '#212121'
 export const SECONDARY_TEXT = '#757575'
 export const DIVIDER_COLOR = '#BDBDBD'
+export const SUBMIT_BORDER_RADIUS = 50
+export const ADD_BORDER_RADIUS = 100
+export const BORDER_RADIUS = 10
 
 export const BODY_AREAS = [
-    { 
-        label: 'Abs',
-        value: 'abs',
-    },
-    {
-        label: 'Arms',
-        value: 'arms',
-    },
-    {
-        label: 'Back',
-        value: 'back',
-    },
-    {
-        label: 'Cardio',
-        value: 'cardio',
-    },
-    {
-        label: 'Chest',
-        value: 'chest',
-    },
-    {
-        label: 'Legs',
-        value: 'legs',
-    },
-    {
-        label: 'Shoulders',
-        value: 'shoulders',
-    },
-    {
-        label: 'Other',
-        value: 'other',
-    },
+  {
+    label: 'Abs',
+    value: 'abs',
+  },
+  {
+    label: 'Arms',
+    value: 'arms',
+  },
+  {
+    label: 'Back',
+    value: 'back',
+  },
+  {
+    label: 'Cardio',
+    value: 'cardio',
+  },
+  {
+    label: 'Chest',
+    value: 'chest',
+  },
+  {
+    label: 'Legs',
+    value: 'legs',
+  },
+  {
+    label: 'Shoulders',
+    value: 'shoulders',
+  },
+  {
+    label: 'Other',
+    value: 'other',
+  },
 ]
 
 export const WORKOUTS = [
-    {
-        label: 'Bench Press',
-        value: 'bench_press',
-    },
-    {
-        label: 'Hammer Curl',
-        value: 'hammer_curl',
-    },
-    {
-        label: 'Squats',
-        value: 'squats',
-    },
-    {
-        label: 'Pull-ups',
-        value: 'pullup',
-    },
-    {
-        label: 'Other',
-        value: 'other',
-    },
+  {
+    label: 'Bench Press',
+    value: 'bench_press',
+  },
+  {
+    label: 'Hammer Curl',
+    value: 'hammer_curl',
+  },
+  {
+    label: 'Squats',
+    value: 'squats',
+  },
+  {
+    label: 'Pull-ups',
+    value: 'pullup',
+  },
+  {
+    label: 'Other',
+    value: 'other',
+  },
 ]
-
-export const SETS_RANGE = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]

@@ -1,83 +1,74 @@
 import React, { Component } from 'react'
-import { StyleSheet, FlatList, View } from 'react-native'
-import { List, ListItem } from 'react-native-elements'
-import { PRIMARY_TEXT, LIGHT_PRIMARY_COLOR } from './constants';
+import { FlatList, View } from 'react-native'
+import { ListItem, Divider } from 'react-native-elements'
+import { PRIMARY_COLOR } from './constants'
 
 export default class WorkoutList extends Component {
   constructor() {
-    super();
+    super()
     const list = [
       {
         name: 'Example 1',
-        subtitle: 'Example 1'
+        subtitle: 'Example 1',
       },
       {
         name: 'Example 2',
-        subtitle: 'Example 2'
+        subtitle: 'Example 2',
       },
       {
         name: 'Example 3',
-        subtitle: 'Example 3'
+        subtitle: 'Example 3',
       },
       {
         name: 'Example 4',
-        subtitle: 'Example 4'
+        subtitle: 'Example 4',
       },
       {
         name: 'Example 5',
-        subtitle: 'Example 5'
+        subtitle: 'Example 5',
       },
       {
         name: 'Example 6',
-        subtitle: 'Example 6'
+        subtitle: 'Example 6',
       },
       {
         name: 'Example 7',
-        subtitle: 'Example 7'
+        subtitle: 'Example 7',
       },
       {
         name: 'Example 8',
-        subtitle: 'Example 8'
+        subtitle: 'Example 8',
       },
     ]
     this.state = {
-      list: list
+      list,
     }
   }
 
-  renderRow ({ item }) {
-    return (
-      <ListItem
-        title={item.name}
-        subtitle={item.subtitle}
-      />
-    )
-  }
+  keyExtractor = (item, index) => index
+
+  renderItem = ({ item }) => (
+    <ListItem
+      title={item.name}
+      subtitle={item.subtitle}
+      onPress={() => console.log(item.name)}
+      underlayColor={PRIMARY_COLOR}
+    />
+  )
 
   render() {
+    const { list } = this.state
     return (
-      <View style={styles.container}>
-        <List containerStyle={{marginBottom: 20}}>
-          <FlatList
-            data={this.state.list}
-            renderItem={this.renderRow}
-            keyExtractor={item => item.name}
-          />
-        </List>
+      <View style={{ flex: 2 }}>
+        <FlatList
+          ItemSeparatorComponent={() => (
+            <Divider />
+          )}
+          keyExtractor={item => item.name}
+          data={list}
+          renderItem={this.renderItem}
+        />
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 2,
-    backgroundColor: LIGHT_PRIMARY_COLOR,
-  },
-  text: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: PRIMARY_TEXT,
-    margin: 10,
-  },
-})
