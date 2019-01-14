@@ -61,3 +61,4 @@ ios/*
 
 # Other files
 0a
+*.code-workspace
