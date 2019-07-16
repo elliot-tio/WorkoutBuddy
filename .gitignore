@@ -57,3 +57,8 @@ buck-out/
 
 # Root folder assets
 /assets
+ios/*
+
+# Other files
+0a
+*.code-workspace

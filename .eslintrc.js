@@ -40,9 +40,6 @@ module.exports = {
         "react-native/split-platform-components": [
             "error"
         ],
-        "react-native/no-inline-styles": [
-            "error"
-        ],
         "react-native/no-raw-text": [
             "error"
         ],
@@ -59,6 +56,9 @@ module.exports = {
             "off"
         ],
         "react/jsx-filename-extension": [
+            "off"
+        ],
+        "no-underscore-dangle": [
             "off"
         ]
     }
